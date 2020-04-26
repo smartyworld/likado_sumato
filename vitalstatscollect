@@ -1,0 +1,37 @@
+## get hostname
+echo "hostname"
+echo "----------------"
+hostname
+echo ""
+
+## get mac addresses of various interface cards
+echo "mac addresses"
+echo "----------------"
+ifconfig -a | grep -E "HWaddr|ether"
+echo ""
+
+## get ip addresses of various interfaces
+echo "ip addresses"
+echo "----------------"
+hostname -I ## | grep 
+echo ""
+
+## get operating system
+echo "operating system"
+echo "----------------"
+cat /etc/os-release
+echo ""
+
+## get cpu information
+echo "cpu"
+echo "----------------"
+cat /proc/cpuinfo | grep model
+echo $(cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq) "kHz"
+echo ""
+
+## get memory information
+echo "memory"
+echo "----------------"
+cat /proc/meminfo | grep Mem
+echo ""
+
