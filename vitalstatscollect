@@ -35,3 +35,8 @@ echo "----------------"
 cat /proc/meminfo | grep Mem
 echo ""
 
+## get the user
+echo "local username"
+echo "----------------"
+echo $USER
+echo ""
