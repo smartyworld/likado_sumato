@@ -1,0 +1,30 @@
+# start by fetching a raspian image file, whihc might be zipped
+# this link is handy
+# https://www.raspberrypi.org/documentation/installation/installing-images/linux.md
+# on this machine I cd to ~/makesdcards/
+
+wget http://howtoraspberrypi.com/download/raspbian_latest.zip
+
+# and unzip it
+
+unzip -p 2020-04-10-raspian_buster.zip
+
+# then  insert your sd card into your machine or your card into your carad reader
+# then list all the devices
+
+sudo ls -ltr /dev/*
+
+# or an alternative, around moving the card in and out of the slot to determine wih one is the card...
+
+lsblk -p
+
+# unmount any partitions that are on the card eg card /dev/mmcblk0 might have a partition /dev/mmcblk0p1... or /dev/sdb might have /dev/sdb1
+
+umount /dev/mmcblk0p1
+
+# finally use the dd tool to copy the img file to the sd card. note params bs = block size, if = image file, of = output file
+
+sudo dd bs=4M if=~/makesdcards/2020-04-18-raspian-buster.img of=/dev/mmcblk0 status=progress conv=fsync
+
+#  if this fails you can make the block size smaller eg 1M
+
